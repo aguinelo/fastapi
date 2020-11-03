@@ -1,1 +1,1 @@
-hypercorn main:app --bind 0.0.0.0:8000 --reload
+hypercorn main:app --reload --bind 0.0.0.0:8000
