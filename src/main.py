@@ -1,8 +1,23 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from handlers import users
 
 
 app = FastAPI()
+
+
+async def get_token_header():
+    # TODO implements
+    print("implements")
+
+
+app.include_router(
+    users.router,
+    prefix="/users",
+    tags=["users"],
+    dependencies=[Depends(get_token_header)],
+    responses={404: {"description": "Not found"}},
+)
 
 
 # CORS handler
